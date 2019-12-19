@@ -16,13 +16,17 @@ namespace secretsanta
 
                 if (input == "done")
                     break;
-
+                 
                 IDToEmployee.Add(IDToEmployee.Count + 1, input);
             }
 
-
-
-
+            SecretSantaPair[] EmployeePairs = new SecretSantaPair[] {};
+            HashSet<int> AlreadyPairedIDs = new HashSet<int>();
+            
+            while(AlreadyPairedIDs.Count != EmployeePairs.Length)
+            {
+               
+            }
         }
 
         public static int genRandNum(int lowerBound, int upperBound)

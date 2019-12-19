@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{D96908D7-131D-4621-BF5D-E27A7B8A8FB1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="secret-santa/Planning.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="secret-santa/EmptyClass.cs">
     <Files>
-      <File FileName="secret-santa/Program.cs" Line="7" Column="47" />
-      <File FileName="secret-santa/Planning.txt" Line="1" Column="1" />
+      <File FileName="secret-santa/Program.cs" Line="23" Column="1" />
+      <File FileName="secret-santa/Planning.txt" Line="16" Column="29" />
+      <File FileName="secret-santa/EmptyClass.cs" Line="4" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="secret-santa" expanded="True">
             <Node name="secret-santa" expanded="True">
-              <Node name="Planning.txt" selected="True" />
+              <Node name="EmptyClass.cs" selected="True" />
             </Node>
           </Node>
         </State>

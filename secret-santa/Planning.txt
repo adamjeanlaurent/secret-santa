@@ -1,0 +1,18 @@
+﻿
+
+Need a way so that users can type as many names as they want and then assign each person another random one
+
+Needs to be an even amount of people
+
+we can read repeatedly if a loop, having the user type some sort of string to stop input
+
+collect all users with an id(number) as the key of a dictionary with the value as their name, then walk through and assign each another
+random person using a set to keep track of who is done
+
+dictionary[id -> name]
+use set to assign random value
+    int r = rand(between 1 and numOfPeople);
+how to store pairs ?
+use an array of pair objects
+
+then print out of the pairs 

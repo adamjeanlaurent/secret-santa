@@ -40,7 +40,7 @@ namespace secretsanta
             }
         }
 
-        public void GetEmployeesFromCommandFile(string inputFilePath)
+        public void GetEmployeesFromFile(string inputFilePath)
         {
             SetTerminalToChristmasColors();
             Introduction();
@@ -53,6 +53,15 @@ namespace secretsanta
             if(ListOfEmployees.Count % 2 != 0)
             {
                 Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
+                ListOfEmployees = new List<string>();
+                return;
+            }
+
+            if (ListOfEmployees.Count == 0)
+            {
+                Console.WriteLine("Can't Assign, List Of Employees Is Empty!");
+                ListOfEmployees = new List<string>();
+                return;
             }
         }
 

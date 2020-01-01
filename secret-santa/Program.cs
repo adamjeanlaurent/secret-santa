@@ -9,7 +9,7 @@ namespace secretsanta
         {
             Employees SecretSanta = new Employees(("/Users/ajean-laurent/desktop/programming_projects/secret-santa/secret-santa/Pairs.txt"));
             //SecretSanta.GetEmployeesFromCommandLine();
-            SecretSanta.GetEmployeesFromCommandFile("/Users/ajean-laurent/desktop/programming_projects/secret-santa/secret-santa/InputEmployeeFile.txt");
+            SecretSanta.GetEmployeesFromFile("/Users/ajean-laurent/desktop/programming_projects/secret-santa/secret-santa/InputEmployeeFile.txt");
             SecretSanta.AssignAllRandomEmployees();
             SecretSanta.WritePairsToFile();
         }

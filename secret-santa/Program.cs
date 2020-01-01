@@ -7,7 +7,10 @@ namespace secretsanta
     {
         public static void Main(string[] args)
         {
-
+            Employees SecretSanta = new Employees();
+            SecretSanta.GetEmployees();
+            SecretSanta.AssignAllRandomEmployees();
+            SecretSanta.WritePairsToFile();
         }
     }
 }

@@ -6,18 +6,21 @@ namespace secretsanta
 {
     public class Employees
     {
-
         private List<string> ListOfEmployees;
         private List<string> Pairs;
+        public string filePath;
 
-        public Employees()
+        public Employees(string filePath)
         {
             this.ListOfEmployees = new List<string>();
             this.Pairs = new List<string>();
+            this.filePath = filePath;
         }
 
-        public void GetEmployees()
-        { 
+        public void GetEmployeesFromCommandLine()
+        {
+            SetTerminalToChristmasColors();
+            Introduction();
             string userInput = "";
             while(userInput != "-1")
             {
@@ -37,9 +40,41 @@ namespace secretsanta
             }
         }
 
+        public void GetEmployeesFromCommandFile(string inputFilePath)
+        {
+            SetTerminalToChristmasColors();
+            Introduction();
+            string[] lines = System.IO.File.ReadAllLines(inputFilePath);
+            foreach(string line in lines)
+            {
+                ListOfEmployees.Add(line);
+            }
+
+            if(ListOfEmployees.Count % 2 != 0)
+            {
+                Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
+            }
+        }
+
         public void AssignAllRandomEmployees()
-        { 
-            while(ListOfEmployees.Count != 0)
+        {
+            if(ListOfEmployees.Count == 0)
+            {
+                Console.WriteLine("List Of Employees Is Empty! Cannot Assign :(");
+                return;
+            }
+
+            if(ListOfEmployees.Count % 2 != 0)
+            {
+                Console.WriteLine("Cannot Assign, There Are An Odd Number Of Employees :(");
+                return;
+            }
+
+            Console.WriteLine("Processing....");
+
+            System.Threading.Thread.Sleep(5000);
+
+            while (ListOfEmployees.Count != 0)
             {
                 int firstRandNum = GenRandNum();
                 int secondRandNum = GenRandNum();
@@ -51,11 +86,12 @@ namespace secretsanta
                 ListOfEmployees.Remove(firstNameToBeRemoved);
                 ListOfEmployees.Remove(secondNameToBeRemoved);
             }
+            Console.WriteLine("Done! Visit File To View!");
         }
 
         public void WritePairsToFile()
         {
-            using (StreamWriter file = new StreamWriter("/Users/ajean-laurent/desktop/programming_projects/secret-santa/secret-santa/Pairs.txt"))
+            using (StreamWriter file = new StreamWriter(filePath))
             {
                 foreach (string pair in Pairs)
                 {
@@ -69,6 +105,37 @@ namespace secretsanta
         {
             Random r = new Random();
             return r.Next(0, ListOfEmployees.Count);
+        }
+
+        private void SetTerminalToChristmasColors()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.Clear();
+        }
+
+        private void Introduction()
+        {
+            Console.WriteLine("       ____");
+            Console.WriteLine("     {} _  \\");
+            Console.WriteLine("   |__ \\");
+            Console.WriteLine("   /_____\\");
+            Console.WriteLine("     \\o o)\\)_______");
+            Console.WriteLine("     (<  ) /#######\\");
+            Console.WriteLine("    __{'~` }#########|");
+            Console.WriteLine("   /  {   _}_/########|");
+            Console.WriteLine(" /   {  / _|#/ )####|");
+            Console.WriteLine(" /   \\_~/ /_ \\  |####|");
+            Console.WriteLine(" \\______\\/  \\ | |####|");
+            Console.WriteLine(" \\__________\\|/#####|");
+            Console.WriteLine(" |__[X]_____/ \\###/ ");
+            Console.WriteLine(" /___________\\");
+            Console.WriteLine(" |    |/    |");
+            Console.WriteLine(" |___/ |___/");
+            Console.WriteLine("_|   /_|   /");
+            Console.WriteLine("(___,_(___,_)");
+
+            Console.WriteLine("\n\nHAPPY HOLIDAYS!!\n\n");
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{D96908D7-131D-4621-BF5D-E27A7B8A8FB1}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="secret-santa/Employees.cs">
     <Files>
-      <File FileName="secret-santa/Planning.txt" Line="8" Column="1" />
-      <File FileName="secret-santa/Program.cs" />
-      <File FileName="secret-santa/Employees.cs" Line="35" Column="10" />
+      <File FileName="secret-santa/Program.cs" Line="11" Column="52" />
+      <File FileName="secret-santa/Employees.cs" Line="16" Column="13" />
+      <File FileName="secret-santa/Pairs.txt" Line="1" Column="1" />
+      <File FileName="secret-santa/InputEmployeeFile.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,8 +18,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.secret-santa FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../secret-santa/Employees.cs" line="46" offsetX="-1" offsetY="-1" expression="secondRandNum" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.secret-santa PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

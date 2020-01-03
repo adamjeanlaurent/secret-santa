@@ -66,7 +66,7 @@ namespace secretsanta
 
         }
            
-        public void GetEmployeesFromCommandLine()
+        private void GetEmployeesFromCommandLine()
         {
             string userInput = "";
             while(userInput != "-1")
@@ -87,7 +87,7 @@ namespace secretsanta
             }
         }
 
-        public void GetEmployeesFromFile(string inputFilePath)
+        private void GetEmployeesFromFile(string inputFilePath)
         {
             inputFilePath = inputFilePath.Replace("bin/Debug/", "");
             string[] lines = System.IO.File.ReadAllLines(inputFilePath);
@@ -112,7 +112,7 @@ namespace secretsanta
             Console.WriteLine("Done! Visit File To View! Happy Holidays!");
         }
 
-        public void AssignAllRandomEmployees()
+        private void AssignAllRandomEmployees()
         {
             if(ListOfEmployees.Count == 0)
             {
@@ -145,7 +145,7 @@ namespace secretsanta
             Console.WriteLine("Done! Visit File To View! Happy Holidays!");
         }
 
-        public void WritePairsToFile(string fileToWriteTo)
+        private void WritePairsToFile(string fileToWriteTo)
         {
             fileToWriteTo = fileToWriteTo.Replace("bin/Debug/", "");
             using (StreamWriter file = new StreamWriter(fileToWriteTo))

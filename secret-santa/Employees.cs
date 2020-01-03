@@ -17,10 +17,50 @@ namespace secretsanta
             this.filePath = filePath;
         }
 
-        public void GetEmployeesFromCommandLine()
+        public void DisplayMenu()
         {
+            string userInput = "";
             SetTerminalToChristmasColors();
             Introduction();
+
+            while (userInput != "done")
+            {
+                Console.WriteLine("Press 1. To Manually Type Employees Here In The Command Line");
+                Console.WriteLine("Press 2. To Input Employees Via A Text File");
+
+                userInput = Console.ReadLine();
+
+                if(userInput == "1")
+                {
+                    GetEmployeesFromCommandLine();
+                    AssignAllRandomEmployees();
+                    break;
+                }
+
+                else if(userInput == "2")
+                {
+                    Console.Write("File To Read From: ");
+                    string fileToReadFrom = Console.ReadLine();
+                    fileToReadFrom = Path.GetFullPath(fileToReadFrom);
+                    GetEmployeesFromFile(fileToReadFrom);
+                    AssignAllRandomEmployees();
+                    break;
+                }
+
+                else if(userInput == "done")
+                {
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+            }
+        }
+           
+        public void GetEmployeesFromCommandLine()
+        {
             string userInput = "";
             while(userInput != "-1")
             {
@@ -42,27 +82,26 @@ namespace secretsanta
 
         public void GetEmployeesFromFile(string inputFilePath)
         {
-            SetTerminalToChristmasColors();
-            Introduction();
             string[] lines = System.IO.File.ReadAllLines(inputFilePath);
-            foreach(string line in lines)
+
+
+            if (lines.Length % 2 != 0)
+            {
+                Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
+                return;
+            }
+
+            if (lines.Length == 0)
+            {
+                Console.WriteLine("Can't Assign, List Of Employees Is Empty!");
+                return;
+            }
+
+            foreach (string line in lines)
             {
                 ListOfEmployees.Add(line);
             }
-
-            if(ListOfEmployees.Count % 2 != 0)
-            {
-                Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
-                ListOfEmployees = new List<string>();
-                return;
-            }
-
-            if (ListOfEmployees.Count == 0)
-            {
-                Console.WriteLine("Can't Assign, List Of Employees Is Empty!");
-                ListOfEmployees = new List<string>();
-                return;
-            }
+            Console.WriteLine("Done! Visit File To View! Happy Holidays!");
         }
 
         public void AssignAllRandomEmployees()
@@ -95,7 +134,7 @@ namespace secretsanta
                 ListOfEmployees.Remove(firstNameToBeRemoved);
                 ListOfEmployees.Remove(secondNameToBeRemoved);
             }
-            Console.WriteLine("Done! Visit File To View!");
+            Console.WriteLine("Done! Visit File To View! Happy Holidays!");
         }
 
         public void WritePairsToFile()

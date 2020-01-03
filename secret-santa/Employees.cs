@@ -89,6 +89,7 @@ namespace secretsanta
 
         public void GetEmployeesFromFile(string inputFilePath)
         {
+            inputFilePath = inputFilePath.Replace("bin/Debug/", "");
             string[] lines = System.IO.File.ReadAllLines(inputFilePath);
 
 

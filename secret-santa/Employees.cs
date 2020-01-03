@@ -8,13 +8,11 @@ namespace secretsanta
     {
         private List<string> ListOfEmployees;
         private List<string> Pairs;
-        public string filePath;
 
-        public Employees(string filePath)
+        public Employees()
         {
             this.ListOfEmployees = new List<string>();
             this.Pairs = new List<string>();
-            this.filePath = filePath;
         }
 
         public void DisplayMenu()
@@ -33,23 +31,25 @@ namespace secretsanta
                 if(userInput == "1")
                 {
                     GetEmployeesFromCommandLine();
-                    AssignAllRandomEmployees();
                     break;
                 }
+                /*
+                     Need to implment error handling, in the case the file doesn't exist ?
+                     or isn't a text file?
 
+                */
                 else if(userInput == "2")
                 {
                     Console.Write("File To Read From: ");
                     string fileToReadFrom = Console.ReadLine();
                     fileToReadFrom = Path.GetFullPath(fileToReadFrom);
                     GetEmployeesFromFile(fileToReadFrom);
-                    AssignAllRandomEmployees();
                     break;
                 }
 
                 else if(userInput == "done")
                 {
-                    break;
+                    return;
                 }
 
                 else
@@ -57,6 +57,11 @@ namespace secretsanta
                     Console.WriteLine("Invalid Input");
                 }
             }
+            AssignAllRandomEmployees();
+            Console.WriteLine("Where Do You Wants To Pairs Written To? : ");
+            string finalOutputFile = Console.ReadLine();
+            WritePairsToFile(Path.GetFullPath(finalOutputFile));
+
         }
            
         public void GetEmployeesFromCommandLine()
@@ -137,9 +142,9 @@ namespace secretsanta
             Console.WriteLine("Done! Visit File To View! Happy Holidays!");
         }
 
-        public void WritePairsToFile()
+        public void WritePairsToFile(string fileToWriteTo)
         {
-            using (StreamWriter file = new StreamWriter(filePath))
+            using (StreamWriter file = new StreamWriter(fileToWriteTo))
             {
                 foreach (string pair in Pairs)
                 {

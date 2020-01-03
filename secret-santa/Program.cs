@@ -14,11 +14,8 @@ namespace secretsanta
             //SecretSanta.AssignAllRandomEmployees();
             //SecretSanta.WritePairsToFile();
 
-            string fileName = "Pairs.txt";
-
-            Console.WriteLine(Path.GetFullPath(fileName));
-
-            
+            Employees e = new Employees();
+            e.DisplayMenu();
         }
     }
 }

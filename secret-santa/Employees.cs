@@ -24,7 +24,7 @@ namespace secretsanta
             while (userInput != "done")
             {
                 Console.WriteLine("Press 1. To Manually Type Employees Here In The Command Line");
-                Console.WriteLine("Press 2. To Input Employees Via A Text File");
+                Console.WriteLine("Press 2. To Input Employees Via A Text File\n");
 
                 userInput = Console.ReadLine();
 
@@ -60,7 +60,9 @@ namespace secretsanta
             AssignAllRandomEmployees();
             Console.WriteLine("Where Do You Wants To Pairs Written To? : ");
             string finalOutputFile = Console.ReadLine();
-            WritePairsToFile(Path.GetFullPath(finalOutputFile));
+            finalOutputFile = Path.GetFullPath(finalOutputFile);
+            Console.WriteLine(finalOutputFile);
+            WritePairsToFile(finalOutputFile);
 
         }
            
@@ -144,6 +146,7 @@ namespace secretsanta
 
         public void WritePairsToFile(string fileToWriteTo)
         {
+            fileToWriteTo = fileToWriteTo.Replace("bin/Debug/", "");
             using (StreamWriter file = new StreamWriter(fileToWriteTo))
             {
                 foreach (string pair in Pairs)

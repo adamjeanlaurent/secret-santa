@@ -18,6 +18,7 @@ namespace secretsanta
         public void DisplayMenu()
         {
             string userInput = "";
+            bool inputWorked = false;
             SetTerminalToChristmasColors();
             Introduction();
 
@@ -25,12 +26,12 @@ namespace secretsanta
             {
                 Console.WriteLine("Press 1. To Manually Type Employees Here In The Command Line");
                 Console.WriteLine("Press 2. To Input Employees Via A Text File\n");
-
+        
                 userInput = Console.ReadLine();
 
                 if(userInput == "1")
                 {
-                    GetEmployeesFromCommandLine();
+                    inputWorked = GetEmployeesFromCommandLine();
                     break;
                 }
                 /*
@@ -43,7 +44,7 @@ namespace secretsanta
                     Console.Write("File To Read From: ");
                     string fileToReadFrom = Console.ReadLine();
                     fileToReadFrom = Path.GetFullPath(fileToReadFrom);
-                    GetEmployeesFromFile(fileToReadFrom);
+                    inputWorked = GetEmployeesFromFile(fileToReadFrom);
                     break;
                 }
 
@@ -57,16 +58,19 @@ namespace secretsanta
                     Console.WriteLine("Invalid Input");
                 }
             }
-            AssignAllRandomEmployees();
-            Console.WriteLine("Where Do You Wants To Pairs Written To? : ");
-            string finalOutputFile = Console.ReadLine();
-            finalOutputFile = Path.GetFullPath(finalOutputFile);
-            Console.WriteLine(finalOutputFile);
-            WritePairsToFile(finalOutputFile);
+            if (inputWorked)
+            {
+                AssignAllRandomEmployees();
+                Console.WriteLine("Where Do You Wants To Pairs Written To? : ");
+                string finalOutputFile = Console.ReadLine();
+                finalOutputFile = Path.GetFullPath(finalOutputFile);
+                Console.WriteLine(finalOutputFile);
+                WritePairsToFile(finalOutputFile);
+            }
 
         }
            
-        private void GetEmployeesFromCommandLine()
+        private bool GetEmployeesFromCommandLine()
         {
             string userInput = "";
             while(userInput != "-1")
@@ -85,24 +89,34 @@ namespace secretsanta
                 }
                 ListOfEmployees.Add(userInput);
             }
+            return true;
         }
 
-        private void GetEmployeesFromFile(string inputFilePath)
+        private bool GetEmployeesFromFile(string inputFilePath)
         {
             inputFilePath = inputFilePath.Replace("bin/Debug/", "");
-            string[] lines = System.IO.File.ReadAllLines(inputFilePath);
+            string[] lines = { };
+            try
+            {
+               lines = System.IO.File.ReadAllLines(inputFilePath);
+            }
 
-
+            catch(FileNotFoundException e)
+            {
+                Console.WriteLine("File Not Found!\n");
+                return false;
+            }
+           
             if (lines.Length % 2 != 0)
             {
                 Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
-                return;
+                return false;
             }
 
             if (lines.Length == 0)
             {
                 Console.WriteLine("Can't Assign, List Of Employees Is Empty!");
-                return;
+                return false;
             }
 
             foreach (string line in lines)
@@ -110,6 +124,7 @@ namespace secretsanta
                 ListOfEmployees.Add(line);
             }
             Console.WriteLine("Done! Visit File To View! Happy Holidays!");
+            return true;
         }
 
         private void AssignAllRandomEmployees()

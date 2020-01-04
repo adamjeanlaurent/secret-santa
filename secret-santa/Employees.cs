@@ -34,17 +34,22 @@ namespace secretsanta
                     inputWorked = GetEmployeesFromCommandLine();
                     break;
                 }
-                /*
-                     Need to implment error handling, in the case the file doesn't exist ?
-                     or isn't a text file?
-
-                */
+           
                 else if(userInput == "2")
                 {
                     Console.Write("File To Read From: ");
                     string fileToReadFrom = Console.ReadLine();
                     fileToReadFrom = Path.GetFullPath(fileToReadFrom);
+                    if(isTextFile(fileToReadFrom) == false)
+                    {
+                        Console.WriteLine("Input Is Not A .txt File");
+                        continue;
+                    }
                     inputWorked = GetEmployeesFromFile(fileToReadFrom);
+                    if(inputWorked == false)
+                    {
+                        continue;
+                    }
                     break;
                 }
 
@@ -96,6 +101,7 @@ namespace secretsanta
         {
             inputFilePath = inputFilePath.Replace("bin/Debug/", "");
             string[] lines = { };
+
             try
             {
                lines = System.IO.File.ReadAllLines(inputFilePath);
@@ -184,6 +190,11 @@ namespace secretsanta
             Console.ForegroundColor = ConsoleColor.Green;
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.Clear();
+        }
+
+        private bool isTextFile(string filePath)
+        {
+            return Path.GetExtension(filePath) == ".txt";
         }
 
         private void Introduction()

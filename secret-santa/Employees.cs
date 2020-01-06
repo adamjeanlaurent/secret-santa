@@ -66,7 +66,7 @@ namespace secretsanta
             if (inputWorked)
             {
                 AssignAllRandomEmployees();
-                Console.WriteLine("Where Do You Wants To Pairs Written To? : ");
+                Console.Write("Where Do You Wants To Pairs Written To? : ");
                 string finalOutputFile = Console.ReadLine();
                 finalOutputFile = Path.GetFullPath(finalOutputFile);
                 Console.WriteLine(finalOutputFile);
@@ -74,7 +74,7 @@ namespace secretsanta
             }
 
         }
-           
+
         private bool GetEmployeesFromCommandLine()
         {
             string userInput = "";
@@ -86,7 +86,7 @@ namespace secretsanta
                 {
                     if (ListOfEmployees.Count % 2 != 0)
                     {
-                        Console.WriteLine("You Must Enter An Even Amount Of Employees");
+                        Console.WriteLine("You Must Enter An Even Amount Of Employees\n");
                         userInput = "";
                         continue;
                     }
@@ -115,13 +115,13 @@ namespace secretsanta
            
             if (lines.Length % 2 != 0)
             {
-                Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!");
+                Console.WriteLine("Can't Assign, There Must Be An Even Amount Of Lines In The File!\n");
                 return false;
             }
 
             if (lines.Length == 0)
             {
-                Console.WriteLine("Can't Assign, List Of Employees Is Empty!");
+                Console.WriteLine("Can't Assign, List Of Employees Is Empty!\n");
                 return false;
             }
 
@@ -129,7 +129,7 @@ namespace secretsanta
             {
                 ListOfEmployees.Add(line);
             }
-            Console.WriteLine("Done! Visit File To View! Happy Holidays!");
+            Console.WriteLine("Got Employees From File!\n");
             return true;
         }
 
@@ -137,13 +137,13 @@ namespace secretsanta
         {
             if(ListOfEmployees.Count == 0)
             {
-                Console.WriteLine("List Of Employees Is Empty! Cannot Assign :(");
+                Console.WriteLine("List Of Employees Is Empty! Cannot Assign :(\n");
                 return;
             }
 
             if(ListOfEmployees.Count % 2 != 0)
             {
-                Console.WriteLine("Cannot Assign, There Are An Odd Number Of Employees :(");
+                Console.WriteLine("Cannot Assign, There Are An Odd Number Of Employees :(\n");
                 return;
             }
 
@@ -163,9 +163,9 @@ namespace secretsanta
                 ListOfEmployees.Remove(firstNameToBeRemoved);
                 ListOfEmployees.Remove(secondNameToBeRemoved);
             }
-            Console.WriteLine("Done! Visit File To View! Happy Holidays!");
+            Console.WriteLine("Pairs Assigned!\n");
         }
-
+        
         private void WritePairsToFile(string fileToWriteTo)
         {
             fileToWriteTo = fileToWriteTo.Replace("bin/Debug/", "");
@@ -176,7 +176,7 @@ namespace secretsanta
                     file.WriteLine(pair);
                 }
             }
-            Pairs = new List<string>();
+            Console.WriteLine("Visit {0} To See The Pairs!\n", fileToWriteTo);
         }
 
         private int GenRandNum()

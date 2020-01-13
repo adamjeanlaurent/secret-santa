@@ -10,8 +10,6 @@ namespace secretsanta
         {
             Employees e = new Employees();
             e.DisplayMenu();
-            Console.WriteLine("hello");
-            Console.WriteLine("goodbye");
         }
     }
 }

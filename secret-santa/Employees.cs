@@ -69,7 +69,6 @@ namespace secretsanta
                 Console.Write("Where Do You Wants To Pairs Written To? : ");
                 string finalOutputFile = Console.ReadLine();
                 finalOutputFile = Path.GetFullPath(finalOutputFile);
-                Console.WriteLine(finalOutputFile);
                 WritePairsToFile(finalOutputFile);
             }
 

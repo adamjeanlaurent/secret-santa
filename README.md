@@ -1,29 +1,19 @@
 # Secret Santa
 
-TODO - finish this
-
 This purpose of this console application is to help offices or groups of friends easily assign eachother secret santas!
 
 ## How To Use
 
 - Clone This Repository
-- You may have to install visual studio in order to run the exec
+- You may have to install visual studio in order to run the .exe file in secret-santa/bin/debug or run the application in and IDE such as visual studio.
 
 
 ## Gif Of Usage
 
 <img src = "secretSanta.gif">
 
-## Installation and Setup Instructions
+## Instructions
 
-Clone down this repository. You will need `node` , `npm` and `mongoDB` installed globally on your machine.  
+- First, the user must provide a list of an even number employees for the program to randmoly pair with eachother. This can be done in two ways, the first is to type them name by name on the command line, the second is to provide them in a .txt file, with each name on it's own line.
 
-## Reflection
-
-- I use the pomodoro technique daily to study/ do work, there are many sites for practicing this technique, but none of them allow the user to save and see their progress visually. Seeing progress and the hard work you've put into something is a great motivator for continuing success. 
-
-- This was a huge learning experience because it's the first time i've built an application of this scale, and one of the main challenges I ran into was authentication.
-
-- After a few days of research and reading documentation I decided to use the Passport.js's local strategy for authentication, and express-session for creating cookies and sessions.
-
-- The entire list of technologies used here are, JavaScript, HTML, CSS, Passport.js, EJS, Node.js, Express.js, CanvasJS, express-session, Mongoose, MongoDB, Lodash, and a few other NPM packages.
+- Then, the program creates a text file with the randomly generated pairs!
